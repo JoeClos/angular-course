@@ -28,14 +28,13 @@ export class CourseCardComponent implements  OnInit {
     @Input()
     cardIndex: number;
 
-    @Output('courseChanged')
+    @Output('courseSelected')
     courseEmitter = new EventEmitter<Course>();
 
 
 
 
-    constructor(private coursesService: CoursesService,
-                @Attribute('type') private type: string) {
+    constructor() {
 
 
     }
@@ -45,20 +44,27 @@ export class CourseCardComponent implements  OnInit {
 
     }
 
+    isImageVisible() {
+        return this.course && this.course.iconUrl;
+    }
 
+    onCourseViewed() {
 
-    onTitleChanged(newTitle: string) {
-
-        this.course.description = newTitle;
+        this.courseEmitter.emit(this.course);
 
     }
 
+    cardClasses() {
 
-    onSaveClicked(description: string) {
-
-        this.courseEmitter.emit({...this.course, description});
-
+        if (this.course.category == 'BEGINNER') {
+            return 'beginner';
+        }
+        
     }
 
-
+    // cardStyles() {
+    //     return {
+    //         'text-decoration' : 'underline'
+    //     };
+    // }
 }

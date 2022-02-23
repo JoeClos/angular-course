@@ -22,4 +22,10 @@ describe('CourseCardComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  cardClasses(){
+    return {
+      'beginner: true'
+    }
+  }
 });

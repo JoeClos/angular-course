@@ -16,36 +16,18 @@ import {CourseTitleComponent} from './course-title/course-title.component';
 export class AppComponent implements OnInit {
 
     courses: Course[] = COURSES;
+    course = COURSES[0];
 
-    coursesTotal = this.courses.length;
-
-    constructor(
-        private coursesService: CoursesService,
-        @Inject(CONFIG_TOKEN) private config: AppConfig,
-        private injector: Injector) {
+    constructor() {
 
     }
 
     ngOnInit() {
 
-        const htmlElement = createCustomElement(CourseTitleComponent, {injector:this.injector});
-
-        customElements.define('course-title', htmlElement);
 
     }
-
-    onEditCourse() {
-
-            this.courses[1].category = 'ADVANCED';
-
+    onCourseSelected(course:Course) {
+        console.log("App component", course);
     }
-
-    save(course: Course) {
-        this.coursesService.saveCourse(course)
-            .subscribe(
-                () => console.log('Course Saved!')
-            );
-    }
-
 
 }
