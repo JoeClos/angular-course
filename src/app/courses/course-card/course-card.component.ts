@@ -39,7 +39,7 @@ export class CourseCardComponent implements  OnInit {
 
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
 
 
     }
@@ -62,9 +62,9 @@ export class CourseCardComponent implements  OnInit {
         
     }
 
-    // cardStyles() {
-    //     return {
-    //         'text-decoration' : 'underline'
-    //     };
-    // }
+    cardStyles() {
+        return {
+          'background-image': 'url(' + this.course.iconUrl + ')'
+      };
+    }
 }
